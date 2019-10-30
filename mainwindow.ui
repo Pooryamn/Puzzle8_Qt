@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>911</width>
-    <height>585</height>
+    <width>840</width>
+    <height>580</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,13 +17,316 @@
    <iconset resource="resource.qrc">
     <normaloff>:/new/prefix1/Main_icon.png</normaloff>:/new/prefix1/Main_icon.png</iconset>
   </property>
-  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QLabel" name="lbl_Back">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>575</width>
+      <height>526</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border : 4px solid rgb(204, 0, 0);
+background-color: rgb(0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_input">
+    <property name="geometry">
+     <rect>
+      <x>605</x>
+      <y>10</y>
+      <width>100</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&amp;Input</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_solve">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>10</y>
+      <width>100</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&amp;Solve</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_refresh">
+    <property name="geometry">
+     <rect>
+      <x>605</x>
+      <y>45</y>
+      <width>100</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&amp;Refresh</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_shuffle">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>45</y>
+      <width>100</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&amp;Shuffle</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_algo">
+    <property name="geometry">
+     <rect>
+      <x>605</x>
+      <y>100</y>
+      <width>100</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border : 1.5px solid blue;
+background-color: rgb(5, 203, 169);
+
+</string>
+    </property>
+    <property name="text">
+     <string>Algorithm :</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="combo_algorithm">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>100</y>
+      <width>100</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Type1</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Type2</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Type3</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QTextBrowser" name="txt_solution">
+    <property name="geometry">
+     <rect>
+      <x>605</x>
+      <y>180</y>
+      <width>215</width>
+      <height>160</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_solution">
+    <property name="geometry">
+     <rect>
+      <x>605</x>
+      <y>155</y>
+      <width>215</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border : 2px solid rgb(204, 0, 0);
+background-color: rgb(245, 133, 133);</string>
+    </property>
+    <property name="text">
+     <string>Solution : </string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_r1">
+    <property name="geometry">
+     <rect>
+      <x>605</x>
+      <y>360</y>
+      <width>100</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border : 2px solid rgb(13, 10, 161);
+background-color: rgb(173, 127, 168);</string>
+    </property>
+    <property name="text">
+     <string>Moves : </string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_moves">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>360</y>
+      <width>100</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border : 2px solid rgb(13, 10, 161);
+background-color: rgb(173, 127, 168);
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_r2">
+    <property name="geometry">
+     <rect>
+      <x>605</x>
+      <y>405</y>
+      <width>100</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border : 2px solid rgb(9, 93, 12);
+background-color: rgb(138, 226, 52);</string>
+    </property>
+    <property name="text">
+     <string>Time(ms) :</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_time">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>405</y>
+      <width>100</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border : 2px solid rgb(9, 93, 12);
+background-color: rgb(138, 226, 52);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_nextstep">
+    <property name="geometry">
+     <rect>
+      <x>605</x>
+      <y>450</y>
+      <width>215</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Next Step</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_info">
+    <property name="geometry">
+     <rect>
+      <x>605</x>
+      <y>500</y>
+      <width>215</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>true</underline>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border : 2px solid rgb(251, 73, 3);
+background-color: rgb(237, 212, 0);</string>
+    </property>
+    <property name="text">
+     <string>Poorya mohammadi nasab</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>911</width>
+     <width>840</width>
      <height>22</height>
     </rect>
    </property>
@@ -36,7 +339,6 @@
     <bool>false</bool>
    </attribute>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
