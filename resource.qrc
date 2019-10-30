@@ -1,5 +1,15 @@
 <RCC>
     <qresource prefix="/new/prefix1">
         <file>Main_icon.png</file>
+        <file>imgs/sahpe.pptx</file>
+        <file>imgs/Blank.JPG</file>
+        <file>imgs/8.jpg</file>
+        <file>imgs/7.jpg</file>
+        <file>imgs/6.jpg</file>
+        <file>imgs/5.jpg</file>
+        <file>imgs/4.jpg</file>
+        <file>imgs/3.jpg</file>
+        <file>imgs/2.jpg</file>
+        <file>imgs/1.jpg</file>
     </qresource>
 </RCC>
