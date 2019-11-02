@@ -13,7 +13,11 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
+    char *input_str;
     ~MainWindow();
+
+private slots:
+    void on_btn_input_clicked();
 
 private:
     Ui::MainWindow *ui;
