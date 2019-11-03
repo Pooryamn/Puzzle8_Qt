@@ -13,6 +13,7 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
+    void set_position(int a);
     char *input_str;
     ~MainWindow();
 
