@@ -21,6 +21,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_btn_input_clicked()
 {
+    ui->txt_solution->clear();
     // open input dialog
     input_dialog input(this);
     input.setModal(true);
@@ -32,11 +33,12 @@ void MainWindow::on_btn_input_clicked()
     // set input to int
     int a = input_str.toInt();
 
-    // test :
-    qDebug() << a;
-    qDebug() << a%10;
     // set each element position
     set_position(a);
+
+    // set ouyput box initial :
+    ui->txt_solution->append("Start state : ");
+    ui->txt_solution->append(input_str + "\n");
 }
 
 void MainWindow::set_position(int a){
@@ -323,4 +325,26 @@ void MainWindow::set_position(int a){
     }
 
 
+}
+
+
+void MainWindow::refresh(){
+    ui->txt_solution->clear();
+
+    ui->lbl_a1->setGeometry(24,26,172,155);
+    ui->lbl_a2->setGeometry(211,26,172,155);
+    ui->lbl_a3->setGeometry(398,26,172,155);
+
+    ui->lbl_a4->setGeometry(24,196,172,155);
+    ui->lbl_a5->setGeometry(211,196,172,155);
+    ui->lbl_a6->setGeometry(398,196,172,155);
+
+    ui->lbl_a7->setGeometry(24,366,172,155);
+    ui->lbl_a8->setGeometry(211,366,172,155);
+    ui->lbl_Blank->setGeometry(398,366,172,155);
+}
+
+void MainWindow::on_btn_refresh_clicked()
+{
+    refresh();
 }
