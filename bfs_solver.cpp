@@ -3,6 +3,13 @@
 
 using namespace std;
 
+// ===========
+// public vars :
+// ===========
+
+int row[] = { 1, 0, -1, 0 };
+int col[] = { 0, -1, 0, 1 };
+
 
 // ===========
 // structures :
@@ -37,7 +44,11 @@ struct comp
 // functions :
 // ===========
 
-Node *newNode(int mat[3][3],int x , int y, int newX, int newY, int level,Node* parent);
+Node *newNode(int mat[3][3],int x , int y, int newX, int newY, int level,Node* parent); // Create new node and set it.
+void memcpy(int distination[3][3],int source[3][3]); // copy matrix data to another
+void swap(int *distination , int* source);
+int calculateCost(int initial[3][3], int final[3][3]); // cost of step
+int isSafe(int x, int y); // check if (x, y) is a valid matrix cordinate
 
 
 
@@ -69,8 +80,94 @@ void BFS_Solver::Solve(){
     priority_queue<Node*,std::vector<Node*>,comp> pq;
 
     // Create root :
+    Node* root = newNode(initial,x,y,x,y,0,NULL);
+
+    root->cost = calculateCost(initial,final);
+
+    // add root to queue
+    pq.push(root);
+
+    // main work in BFS Search :
+    while(!pq.empty()){
+        Node* min = pq.top(); // smallest cost
+
+        pq.pop(); // node with smallest cost deleted
+
+        if(min->cost == 0 ){ // if min is answer
+            // print the path !!!!!!!!!!!!!
+            return;
+        }
+
+        for (int i =0;i<4;i++) { // each node can have 4 children (maximum)
+
+            if(isSafe(min->x + row[i],min->y + col[i])){
+
+                // create child and calc its cost
+                Node* child = newNode(min->mat,min->x,min->y,min->x + row[i],min->y+col[i],min->level+1,min);
+
+                child->cost = calculateCost(child->mat,final); // calc cost
+
+                //add child to queue
+                pq.push(child);
+            }
+        }
+    }
+}
+
+
+Node *newNode(int mat[3][3],int x , int y, int newX, int newY, int level,Node* parent){
+
+    //create node in storage :
+    Node* node = new Node;
+
+    // set parent :
+    node->parent = parent;
+
+    // set matirx data
+    memcpy(node->mat,mat);
+
+    //move blank block
+    swap(node->mat[x][y],node->mat[newX][newY]);
+
+    node->cost = INT_MAX ; // set cost as infinite
+
+    node->level = level;
+
+    node->x = newX;
+    node->y = newY;
+
+    return  node;
 
 }
+
+void memcpy(int distination[3][3],int source[3][3]){
+   for (int i = 0; i < 3; i++) {
+        for (int j=0;j<3;j++) {
+            distination[i][j] = source[i][j];
+        }
+    }
+}
+
+void swap(int * dist,int * src){
+    int temp = *dist;
+    *dist = *src;
+    *src = temp;
+}
+
+int calculateCost(int initial[3][3], int final[3][3])
+{
+    int count = 0;
+    for (int i = 0; i < 3; i++)
+    for (int j = 0; j < 3; j++)
+        if (initial[i][j] && initial[i][j] != final[i][j])
+        count++;
+    return count;
+}
+
+int isSafe(int x, int y) {
+    return (x >= 0 && x < 3 && y >= 0 && y < 3);
+}
+
 
 
 

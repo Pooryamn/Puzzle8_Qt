@@ -60,11 +60,18 @@ background-color: rgb(0, 0, 0);</string>
    <widget class="QPushButton" name="btn_solve">
     <property name="geometry">
      <rect>
-      <x>720</x>
-      <y>10</y>
-      <width>100</width>
-      <height>25</height>
+      <x>605</x>
+      <y>50</y>
+      <width>215</width>
+      <height>35</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>&amp;Solve</string>
@@ -73,27 +80,14 @@ background-color: rgb(0, 0, 0);</string>
    <widget class="QPushButton" name="btn_refresh">
     <property name="geometry">
      <rect>
-      <x>605</x>
-      <y>45</y>
+      <x>720</x>
+      <y>10</y>
       <width>100</width>
       <height>25</height>
      </rect>
     </property>
     <property name="text">
      <string>&amp;Refresh</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_shuffle">
-    <property name="geometry">
-     <rect>
-      <x>720</x>
-      <y>45</y>
-      <width>100</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>&amp;Shuffle</string>
     </property>
    </widget>
    <widget class="QLabel" name="lbl_algo">

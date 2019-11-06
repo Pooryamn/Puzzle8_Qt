@@ -39,6 +39,7 @@ void MainWindow::on_btn_input_clicked()
     // set ouyput box initial :
     ui->txt_solution->append("Start state : ");
     ui->txt_solution->append(input_str + "\n");
+
 }
 
 void MainWindow::set_position(int a){
