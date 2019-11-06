@@ -3,7 +3,11 @@
 
 using namespace std;
 
+
+// ===========
 // structures :
+// ===========
+
 struct Node{
     Node *parent; // stores parent node for finding answer path
 
@@ -18,6 +22,23 @@ struct Node{
     int level; // number of moves to now
 
 };
+
+// Comparison object for heap
+struct comp
+{
+    bool operator()(const Node* lhs, const Node* rhs) const
+    {
+        return (lhs->cost + lhs->level) > (rhs->cost + rhs->level);
+    }
+};
+
+
+// ===========
+// functions :
+// ===========
+
+Node *newNode(int mat[3][3],int x , int y, int newX, int newY, int level,Node* parent);
+
 
 
 BFS_Solver::BFS_Solver(int start[3][3],int ix , int iy)
@@ -45,7 +66,10 @@ BFS_Solver::BFS_Solver(int start[3][3],int ix , int iy)
 void BFS_Solver::Solve(){
 
     // Create a Queue to store nodes of search tree :
-    //priority_queue<
+    priority_queue<Node*,std::vector<Node*>,comp> pq;
+
+    // Create root :
+
 }
 
 
