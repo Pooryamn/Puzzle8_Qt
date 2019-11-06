@@ -129,17 +129,17 @@ background-color: rgb(5, 203, 169);
     </property>
     <item>
      <property name="text">
-      <string>Type1</string>
+      <string>BFS</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Type2</string>
+      <string>DFS</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Type3</string>
+      <string>IDS</string>
      </property>
     </item>
    </widget>
