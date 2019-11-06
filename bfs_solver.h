@@ -6,6 +6,7 @@ class BFS_Solver
 {
 public:
     BFS_Solver(int stert[3][3],int x , int y);
+    void Solve();
 
 private:
     int initial[3][3];

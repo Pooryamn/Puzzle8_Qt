@@ -1,4 +1,24 @@
 #include "bfs_solver.h"
+#include <bits/stdc++.h>
+
+using namespace std;
+
+// structures :
+struct Node{
+    Node *parent; // stores parent node for finding answer path
+
+    int mat[3][3]; // stores data in this node.
+
+    // Zero position :
+    int x;
+    int y;
+
+    int cost; // number of misplaced blocks
+
+    int level; // number of moves to now
+
+};
+
 
 BFS_Solver::BFS_Solver(int start[3][3],int ix , int iy)
 {
@@ -20,5 +40,13 @@ BFS_Solver::BFS_Solver(int start[3][3],int ix , int iy)
         }
     }
     final[2][2] = 0 ;
-
 }
+
+void BFS_Solver::Solve(){
+
+    // Create a Queue to store nodes of search tree :
+    //priority_queue<
+}
+
+
+
