@@ -1,5 +1,8 @@
 #include "bfs_solver.h"
 #include <bits/stdc++.h>
+#include <QString>
+#include <fstream>
+#include <QMessageBox>
 
 using namespace std;
 
@@ -49,7 +52,8 @@ void memcpy(int distination[3][3],int source[3][3]); // copy matrix data to anot
 void swap(int *distination , int* source);
 int calculateCost(int initial[3][3], int final[3][3]); // cost of step
 int isSafe(int x, int y); // check if (x, y) is a valid matrix cordinate
-
+void print_path(Node* root); // print path
+void print_node(int mat[3][3]);
 
 
 BFS_Solver::BFS_Solver(int start[3][3],int ix , int iy)
@@ -76,6 +80,9 @@ BFS_Solver::BFS_Solver(int start[3][3],int ix , int iy)
 
 void BFS_Solver::Solve(){
 
+    // begin timer
+    start = clock();
+
     // Create a Queue to store nodes of search tree :
     priority_queue<Node*,std::vector<Node*>,comp> pq;
 
@@ -95,6 +102,7 @@ void BFS_Solver::Solve(){
 
         if(min->cost == 0 ){ // if min is answer
             // print the path !!!!!!!!!!!!!
+            print_path(min);
             return;
         }
 
@@ -109,9 +117,21 @@ void BFS_Solver::Solve(){
 
                 //add child to queue
                 pq.push(child);
+
+                // limitation :
+                if(pq.size() > 15000000){
+                    QMessageBox::warning(0,"Internal Error","this problem can't solved");
+                    remove("nodes.dat");
+                    return;
+                }
             }
         }
     }
+    //finish the timer
+    finish = clock();
+
+    delay = finish - start;
+
 }
 
 
@@ -168,6 +188,40 @@ int isSafe(int x, int y) {
     return (x >= 0 && x < 3 && y >= 0 && y < 3);
 }
 
+void print_path(Node* root){
+    if(root == NULL){
+        return;
+    }
 
+    print_path(root->parent);
+    print_node(root->mat);
+}
+
+void print_node(int mat[3][3]){
+
+    int k =100000000;
+    int num = 0;
+
+    for (int i=0;i<3;i++) {
+        for (int j=0;j<3;j++) {
+            num = num + mat[i][j] * k;
+            k = k/10;
+        }
+    }
+
+    QString str = QString::number(num);
+
+    ofstream outfile;
+    outfile.open("nodes.dat",ios::app);
+    outfile << str.toStdString() << "\n";
+
+    outfile.close();
+
+
+}
+
+clock_t BFS_Solver::get_time(){
+    return delay;
+}
 
 

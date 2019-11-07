@@ -2,9 +2,16 @@
 #include "ui_mainwindow.h"
 
 #include <QDebug>
-
+#include <fstream>
+#include <QFile>
+#include <time.h>
 // input dialog header:
 #include "input_dialog.h"
+
+// input BFS Solver :
+#include "bfs_solver.h"
+
+using namespace std;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -12,6 +19,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->btn_solve->setEnabled(false);
+    ui->btn_nextstep->setEnabled(false);
 }
 
 MainWindow::~MainWindow()
@@ -28,7 +37,10 @@ void MainWindow::on_btn_input_clicked()
     input.exec();
 
     // get data from input dialog
-    QString input_str = input.get_data();
+    input_str = input.get_data();
+
+    // set solve enable :
+    ui->btn_solve->setEnabled(true);
 
     // set input to int
     int a = input_str.toInt();
@@ -332,6 +344,8 @@ void MainWindow::set_position(int a){
 void MainWindow::refresh(){
     ui->txt_solution->clear();
 
+    input_str = "";
+
     ui->lbl_a1->setGeometry(24,26,172,155);
     ui->lbl_a2->setGeometry(211,26,172,155);
     ui->lbl_a3->setGeometry(398,26,172,155);
@@ -343,6 +357,8 @@ void MainWindow::refresh(){
     ui->lbl_a7->setGeometry(24,366,172,155);
     ui->lbl_a8->setGeometry(211,366,172,155);
     ui->lbl_Blank->setGeometry(398,366,172,155);
+
+    ui->btn_solve->setEnabled(false);
 }
 
 void MainWindow::on_btn_refresh_clicked()
@@ -350,4 +366,91 @@ void MainWindow::on_btn_refresh_clicked()
     refresh();
 }
 
+
+
+void MainWindow::on_btn_solve_clicked()
+{
+    QString algorithm = ui->combo_algorithm->currentText();
+
+    // delete last solution :
+    QFile rmfile("nodes.dat");
+    rmfile.remove();
+
+
+    // convert Qstring to 3 * 3 matrix :
+
+    int input = input_str.toInt();
+    int k = 100000000;
+    int mat[3][3];
+    int x , y; // zero position
+
+    for (int i=0;i<3;i++) {
+        for (int j=0;j<3;j++) {
+            mat[i][j] = (input / k) % 10 ;
+            if(mat[i][j] == 0){
+                x = i;
+                y = j;
+            }
+            k = k / 10 ;
+        }
+    }
+
+    // check the algorithms :
+    if(algorithm == "BFS"){
+        BFS_Solver BFS(mat,x,y);
+        BFS.Solve();
+        clock_t times = BFS.get_time();
+        float td = (float)times/1000000000000;
+        ui->lbl_time->setText(QString::number(td));
+    }
+
+    // print solve :
+    QFile in("nodes.dat");
+
+    if(!in.open(QIODevice::ReadOnly)){
+        return;
+    }
+
+    QTextStream in_text(&in);
+
+    QString tmp = in_text.readAll();
+
+    ui->txt_solution->append(tmp);
+
+    QStringList strlist = tmp.split(QRegExp("[\n]"),QString::SkipEmptyParts);
+
+    ui->lbl_moves->setText(QString::number(strlist.size()));
+
+
+    in.close();
+
+    ui->btn_nextstep->setEnabled(true);
+    step = 1;
+}
+
+
+
+void MainWindow::on_btn_nextstep_clicked()
+{
+    QFile in("nodes.dat");
+
+    if(!in.open(QIODevice::ReadOnly)){
+        return;
+    }
+    QTextStream in_text(&in);
+
+    QString tmp = in_text.readAll();
+    QStringList strlist = tmp.split(QRegExp("[\n]"),QString::SkipEmptyParts);
+
+    int a = strlist[step].toInt();
+
+    step++ ;
+
+    set_position(a);
+
+    if(step == strlist.size()){
+        ui->btn_nextstep->setEnabled(false);
+    }
+
+}
 
