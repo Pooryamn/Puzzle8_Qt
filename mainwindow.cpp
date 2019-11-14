@@ -396,7 +396,7 @@ void MainWindow::on_btn_solve_clicked()
     }
 
     // check the algorithms :
-    if(algorithm == "BFS"){
+    if(algorithm == "UCS"){
         BFS_Solver BFS(mat,x,y);
         BFS.Solve();
         clock_t times = BFS.get_time();

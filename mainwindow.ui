@@ -123,7 +123,7 @@ background-color: rgb(5, 203, 169);
     </property>
     <item>
      <property name="text">
-      <string>BFS</string>
+      <string>UCS</string>
      </property>
     </item>
     <item>
