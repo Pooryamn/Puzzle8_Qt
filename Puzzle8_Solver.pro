@@ -26,12 +26,14 @@ CONFIG += c++11
 
 SOURCES += \
         bfs_solver.cpp \
+        bfs_t.cpp \
         input_dialog.cpp \
         main.cpp \
         mainwindow.cpp
 
 HEADERS += \
         bfs_solver.h \
+        bfs_t.h \
         input_dialog.h \
         mainwindow.h
 
