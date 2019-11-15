@@ -8,8 +8,11 @@
 // input dialog header:
 #include "input_dialog.h"
 
-// input BFS Solver :
+// input UCS Solver :
 #include "bfs_solver.h"
+
+// input BFS solver
+#include "bfs_t.h"
 
 using namespace std;
 
@@ -400,6 +403,13 @@ void MainWindow::on_btn_solve_clicked()
         BFS_Solver BFS(mat,x,y);
         BFS.Solve();
         clock_t times = BFS.get_time();
+        float td = (float)times/1000000000000;
+        ui->lbl_time->setText(QString::number(td));
+    }
+    else if (algorithm == "BFS") {
+        bfs_t BBFS(mat,x,y);
+        BBFS.Solve();
+        clock_t times = BBFS.get_time();
         float td = (float)times/1000000000000;
         ui->lbl_time->setText(QString::number(td));
     }

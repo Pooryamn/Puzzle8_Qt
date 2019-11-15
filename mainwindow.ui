@@ -128,12 +128,12 @@ background-color: rgb(5, 203, 169);
     </item>
     <item>
      <property name="text">
-      <string>DFS</string>
+      <string>BFS</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>IDS</string>
+      <string>DFS</string>
      </property>
     </item>
    </widget>
