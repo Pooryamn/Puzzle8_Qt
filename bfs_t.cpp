@@ -33,14 +33,6 @@ struct Node{
 
 };
 
-// Comparison object for heap
-struct comp
-{
-    bool operator()(const Node* lhs, const Node* rhs) const
-    {
-        return (lhs->cost + lhs->level) > (rhs->cost + rhs->level);
-    }
-};
 
 // ===========
 // functions :

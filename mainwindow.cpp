@@ -14,6 +14,9 @@
 // input BFS solver
 #include "bfs_t.h"
 
+// input dfs solver
+#include "dfs_solver.h"
+
 using namespace std;
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -413,6 +416,13 @@ void MainWindow::on_btn_solve_clicked()
         float td = (float)times/1000000000000;
         ui->lbl_time->setText(QString::number(td));
     }
+    else if (algorithm == "DFS") {
+        dfs_solver DFS(mat,x,y);
+        DFS.Solve();
+        clock_t times = DFS.get_time();
+        float td = (float)times/1000000000000;
+        ui->lbl_time->setText(QString::number(td));
+    }
 
     // print solve :
     QFile in("nodes.dat");
@@ -429,7 +439,7 @@ void MainWindow::on_btn_solve_clicked()
 
     QStringList strlist = tmp.split(QRegExp("[\n]"),QString::SkipEmptyParts);
 
-    ui->lbl_moves->setText(QString::number(strlist.size()));
+    ui->lbl_moves->setText(QString::number(strlist.size()-1));
 
 
     in.close();
