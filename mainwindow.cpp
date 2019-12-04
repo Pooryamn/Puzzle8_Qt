@@ -376,6 +376,8 @@ void MainWindow::on_btn_refresh_clicked()
 
 void MainWindow::on_btn_solve_clicked()
 {
+    ui->lbl_moves->clear();
+    ui->lbl_time->clear();
     QString algorithm = ui->combo_algorithm->currentText();
 
     // delete last solution :
