@@ -9,7 +9,8 @@ this project solves Puzzle8 problems with AI algorithms (UCS , BFS , DFS)
 Programmer : Poorya Mohammadi Nasab
 
 
-Email :: Poorya@gmx.com
+<h1>Email :: Poorya@gmx.com<\h1>
+
 Email :: Poorya.m.n.b@gmail.com
 
 
